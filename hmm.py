@@ -89,8 +89,6 @@ states = pymc.Stochastic(logp=states_logp,
 
 # Gaussian emission parameters
 mu = pymc.Normal('mu', 0., 1.e-6, value=np.random.randn(N_states))
-sigma = pymc.Uniform('sigma', 0., 100.,
-value=np.random.rand(N_states))
+sigma = pymc.Uniform('sigma', 0., 100., value=np.random.rand(N_states))
 
-y = pymc.Normal('y', mu[states], 1./sigma[states]**2,
-value=data['emission'], observed=True)
+y = pymc.Normal('y', mu[states], 1./sigma[states]**2, value=data['emission'], observed=True)
